@@ -54,13 +54,6 @@ __exportStar(require("./Conversation"), exports);
 var redis_1 = require("redis");
 var Cache = /** @class */ (function () {
     function Cache() {
-        this.client = process.env.environment === "DEV"
-            ? (0, redis_1.createClient)()
-            : (0, redis_1.createClient)({
-                url: "redis://".concat(process.env.REDIS_URL, ":").concat(process.env.REDIS_PORT),
-                username: process.env.REDIS_USERNAME,
-                password: process.env.REDIS_PASSWORD,
-            });
     }
     Cache.prototype.init = function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -69,6 +62,16 @@ var Cache = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         if (!!this.isReady) return [3 /*break*/, 2];
+                        if (!this.client) {
+                            this.client =
+                                process.env.environment === "DEV"
+                                    ? (0, redis_1.createClient)()
+                                    : (0, redis_1.createClient)({
+                                        url: "redis://".concat(process.env.REDIS_URL, ":").concat(process.env.REDIS_PORT),
+                                        username: process.env.REDIS_USERNAME,
+                                        password: process.env.REDIS_PASSWORD,
+                                    });
+                        }
                         return [4 /*yield*/, this.client.connect()];
                     case 1:
                         _a.sent();

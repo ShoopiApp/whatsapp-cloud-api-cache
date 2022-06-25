@@ -1,4 +1,5 @@
 export * from "./Conversation";
+import { RedisClientType } from "@redis/client";
 export default class Cache {
     private static instance;
     private isReady;
@@ -6,7 +7,7 @@ export default class Cache {
     private constructor();
     init(): Promise<void>;
     static getInstance(): Cache;
-    getCache(): import("@redis/client").RedisClientType<{
+    getCache(): RedisClientType<{
         graph: {
             CONFIG_GET: typeof import("@redis/graph/dist/commands/CONFIG_GET");
             configGet: typeof import("@redis/graph/dist/commands/CONFIG_GET");
@@ -251,5 +252,5 @@ export default class Cache {
             RESERVE: typeof import("@redis/bloom/dist/commands/top-k/RESERVE");
             reserve: typeof import("@redis/bloom/dist/commands/top-k/RESERVE");
         };
-    } & import("redis").RedisModules, import("redis").RedisFunctions, import("redis").RedisScripts>;
+    }, Record<string, never>, Record<string, never>>;
 }
