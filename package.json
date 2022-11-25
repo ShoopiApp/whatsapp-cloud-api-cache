@@ -1,6 +1,6 @@
 {
   "name": "@shoopi/whatsapp-cloud-api-cache",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Cache helper for the whatsapp cloud api",
   "main": "dist/index.js",
   "scripts": {
