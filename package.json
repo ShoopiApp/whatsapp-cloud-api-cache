@@ -27,7 +27,7 @@
     "redis": "^4.1.0"
   },
   "peerDependencies": {
-    "@shoopi/whatsapp-cloud-api-responder": "^0.0.1",
+    "@shoopi/whatsapp-cloud-api-responder": "^0.0.3",
     "dotenv": "^16.0.1"
   },
   "devDependencies": {
